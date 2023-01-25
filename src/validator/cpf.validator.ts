@@ -6,10 +6,14 @@ type SumOfDigits =  {
 
 export default class CpfValidator {
 
-    isValidCPF(cpf: string): boolean {
+    isNumberOfDigitsValid(cpf: string): boolean {
         return (cpf.length < 11 || cpf.length > 14)
     }
 
+    isNotRepeatedDigits(cpf: string): boolean {
+        return cpf.split("").every(character => character === cpf[0])
+    }
+    
     formatCPF(cpf: string): string {
         return cpf
             .replace('.', '')
@@ -42,9 +46,9 @@ export default class CpfValidator {
     }
     
     validate(cpf: string): boolean {
-        if (this.isValidCPF(cpf)) throw Error('Invalid cpf');
+        if (this.isNumberOfDigitsValid(cpf)) throw Error('Invalid cpf');
         cpf = this.formatCPF(cpf);
-        if (cpf.split("").every(character => character === cpf[0])) return false;
+        if (this.isNotRepeatedDigits(cpf)) return false;
         const sumOfDigits = this.getSumOfDigits(cpf);
         let firstDigit = this.validateDigit(sumOfDigits.first)
         sumOfDigits.second += 2 * firstDigit;
