@@ -1,4 +1,4 @@
-import { ProductInput } from "../models/product.model"
+import { ProductAbstraction } from "../models/product.model"
 import { getOrder, addProduct, createOrder, getTotalValue } from "../services/order.service"
 import { Request, Response } from "express"
 
@@ -14,9 +14,9 @@ const fetchOrder = (req: Request, res: Response) => {
     });
 }
 
-const newProductToOrder = (req: CustomRequest<ProductInput>, res: Response) => {
+const newProductToOrder = (req: CustomRequest<ProductAbstraction>, res: Response) => {
     const id = Number(req.params.order_id);
-    const product: ProductInput = req.body;
+    const product: ProductAbstraction = req.body;
     const updatedOrder = addProduct(id, product);
     res.json({
         'Produtos adicionados': updatedOrder

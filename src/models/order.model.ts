@@ -1,22 +1,27 @@
 import CpfValidator from "../validator/cpf.validator";
-import Product, { ProductInput } from "./product.model";
+import Product, { ProductAbstraction } from "./product.model";
 
-export interface OrderOutput {
+export interface OrderAbstraction {
+    readonly cpf: string;
     readonly products: Product[];
-    addProduct(input: ProductInput): void;
+    addProduct(input: ProductAbstraction): void;
     getProducts(): Product[];
     getTotalValue(): number;
 }
 
-export class Order implements OrderOutput {
+export class Order implements OrderAbstraction {
+
     readonly products: Product[] = [];
     
     constructor(readonly id: number, readonly cpf: string) {
-        if (!new CpfValidator(cpf).validate()) throw 'CPF inválido'
-        this.cpf = cpf
+        try { 
+            if (new CpfValidator(cpf).validate()) this.cpf = cpf
+        } catch (e) {
+            throw Error('Pedido não pode ser criado com esse cpf');
+        }
     }
 
-    addProduct(input: ProductInput): void {
+    addProduct(input: ProductAbstraction): void {
         const product = new Product(input.description, input.value, input.quantity, input.discount)
         this.products.push(product)
     }

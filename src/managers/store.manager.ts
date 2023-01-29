@@ -1,5 +1,5 @@
-import { Order, OrderOutput } from "../models/order.model";
-import { ProductInput } from "../models/product.model";
+import {  Order, OrderAbstraction } from "../models/order.model";
+import { ProductAbstraction } from "../models/product.model";
 
 export class StoreManager {
 
@@ -13,19 +13,19 @@ export class StoreManager {
         return this._instance;
     }
 
-    createOrder(cpf: string): OrderOutput {
+    createOrder(cpf: string): OrderAbstraction {
         const order = new Order(this.orders.length + 1, cpf);
         this.orders.push(order);
         return order;
     }
 
-    getOrderById(id: number): OrderOutput {
+    getOrderById(id: number): OrderAbstraction {
         const order = this.orders.find(e => e.id === id);
         if (order === undefined) throw Error('Pedido não encontrado');
         return order;
     }
 
-    addProduct(id: number, product: ProductInput): OrderOutput {
+    addProduct(id: number, product: ProductAbstraction): OrderAbstraction {
         const order = this.getOrderById(id);
         order.addProduct(product);
         return order;
