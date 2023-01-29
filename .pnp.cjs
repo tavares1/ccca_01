@@ -35,6 +35,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@types/express", "npm:4.17.16"],
             ["@types/jest", "npm:29.4.0"],
+            ["@types/supertest", "npm:2.0.12"],
             ["express", "npm:4.18.2"],
             ["jest", "virtual:774c90dd377d03b520246c1f660b91138654707fff6783338de3f9e15e58e7218baf5f022961011d8e7b93b1999298cdaee16551527b268121560d731b261d35#npm:29.4.0"],
             ["supertest", "npm:6.3.3"],
@@ -1359,6 +1360,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["@types/cookiejar", [
+        ["npm:2.1.2", {
+          "packageLocation": "./.yarn/cache/@types-cookiejar-npm-2.1.2-2588120a7c-f6e1903454.zip/node_modules/@types/cookiejar/",
+          "packageDependencies": [
+            ["@types/cookiejar", "npm:2.1.2"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["@types/express", [
         ["npm:4.17.16", {
           "packageLocation": "./.yarn/cache/@types-express-npm-4.17.16-8fb62e745c-43f3ed2cea.zip/node_modules/@types/express/",
@@ -1495,6 +1505,27 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-stack-utils-npm-2.0.1-867718ab70-205fdbe332.zip/node_modules/@types/stack-utils/",
           "packageDependencies": [
             ["@types/stack-utils", "npm:2.0.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@types/superagent", [
+        ["npm:4.1.16", {
+          "packageLocation": "./.yarn/cache/@types-superagent-npm-4.1.16-2fb61656c0-187d1d32fd.zip/node_modules/@types/superagent/",
+          "packageDependencies": [
+            ["@types/superagent", "npm:4.1.16"],
+            ["@types/cookiejar", "npm:2.1.2"],
+            ["@types/node", "npm:18.11.18"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@types/supertest", [
+        ["npm:2.0.12", {
+          "packageLocation": "./.yarn/cache/@types-supertest-npm-2.0.12-deccb2551b-f0e2b44f86.zip/node_modules/@types/supertest/",
+          "packageDependencies": [
+            ["@types/supertest", "npm:2.0.12"],
+            ["@types/superagent", "npm:4.1.16"]
           ],
           "linkType": "HARD",
         }]
@@ -2102,6 +2133,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["clean_arch_exec1", "workspace:."],
             ["@types/express", "npm:4.17.16"],
             ["@types/jest", "npm:29.4.0"],
+            ["@types/supertest", "npm:2.0.12"],
             ["express", "npm:4.18.2"],
             ["jest", "virtual:774c90dd377d03b520246c1f660b91138654707fff6783338de3f9e15e58e7218baf5f022961011d8e7b93b1999298cdaee16551527b268121560d731b261d35#npm:29.4.0"],
             ["supertest", "npm:6.3.3"],
