@@ -4,6 +4,13 @@ type SumOfDigits =  {
     second: number;
 }
 
+enum CPFValidatorConstant {
+    MIN_CPF_LENGTH = 11,
+    MAX_CPF_LENGTH = 14,
+    FIRST_DIGIT_LIMIT = 11,
+    SECOND_DIGIT_LIMIT = 12
+}
+
 export default class CpfValidator {
 
     private cpf: string
@@ -16,7 +23,7 @@ export default class CpfValidator {
     }
     
     private isNumberOfDigitsInvalid(cpf: string): boolean {
-        return (cpf.length < 11 || cpf.length > 14)
+        return (cpf.length < CPFValidatorConstant.MIN_CPF_LENGTH || cpf.length > CPFValidatorConstant.MAX_CPF_LENGTH)
     }
 
     private isNotRepeatedDigits(cpf: string): boolean {
@@ -44,8 +51,8 @@ export default class CpfValidator {
     
         for (let increasingNumber = 1; increasingNumber < this.cpf.length - 1; increasingNumber++) {
             digit = parseInt(this.cpf.substring(increasingNumber - 1, increasingNumber));
-            first = first + (11 - increasingNumber) * digit;
-            second = second + (12 - increasingNumber) * digit;
+            first = first + (CPFValidatorConstant.FIRST_DIGIT_LIMIT - increasingNumber) * digit;
+            second = second + (CPFValidatorConstant.SECOND_DIGIT_LIMIT - increasingNumber) * digit;
         };
     
         return {
