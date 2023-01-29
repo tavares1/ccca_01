@@ -6,7 +6,7 @@ interface CustomRequest<T> extends Request {
     body: T
 }
 
-const fetchOrder = (req: Request, res: Response) => {
+const fetchOrder = (req: Request, res: Response,) => {
     const id = Number(req.params.order_id);
     const order = getOrder(id);
     res.json({
@@ -28,7 +28,7 @@ const createNewOrder = (req: Request, res: Response) => {
     const { cpf } = req.body;
     const order = createOrder(cpf);
     res.json({
-        'Novo pedido criado': order
+        order
     });
 };
 
